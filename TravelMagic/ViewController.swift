@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     @IBOutlet var countriesTableView: UITableView?
 
     let countries = ["China", "Myanmar", "India", "HongKong", "Thai", "Maxico", "Paris", "United Kingdom", "Japan"]
+    let countriesWithCapLetter: [String: String] = ["China": "C", "Myanmar": "M", "India": "I", "HongKong": "H", "Thai": "T", "Maxico": "M", "Paris": "P", "United Kingdom": "UK", "Japan": "J"]
     enum Constants {
         static var callIdentifier = "MagicTableCell"
     }
@@ -35,7 +36,9 @@ extension ViewController: UITableViewDataSource {
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.callIdentifier, for: indexPath)
 
         var cellContantConfiguratin = tableViewCell.defaultContentConfiguration()
-        cellContantConfiguratin.text = countries[indexPath.row]
+        let countryName = countries[indexPath.row]
+        cellContantConfiguratin.text = countryName
+        cellContantConfiguratin.secondaryText = countriesWithCapLetter[countryName]
         tableViewCell.contentConfiguration = cellContantConfiguratin
         return tableViewCell
     }
