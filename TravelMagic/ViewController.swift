@@ -49,5 +49,12 @@ extension ViewController: UITableViewDelegate {
         let cityName = cities[indexPath.row]
         print("User  on  tapped is City \(cityName) , Country \(citiesWithCountryName[cityName] ?? "")")
         tableView.deselectRow(at: indexPath, animated: true)
+
+//        let detailViewController = UIViewController()
+//        detailViewController.view.backgroundColor = .green
+        ////        detailViewController.modalPresentationStyle = .fullScreen
+        ////        present(detailViewController, animated: true)
+//        navigationController?.pushViewController(detailViewController, animated: true)
+        performSegue(withIdentifier: "showCityView", sender: self)
     }
 }
